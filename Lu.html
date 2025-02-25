@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lu ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        p {
+            color: white;
+            background-color: rgba(255, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .hearts::before, .hearts::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .hearts::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .hearts::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+        }
+
+        .carta {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            border: 2px solid red;
+            text-align: left;
+            box-shadow: 0px 0px 10px red;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="inicio" class="container">
+        <h1>Holaa Lu ❤️</h1>
+        <p>Ya que estaba aburrido y pensé en vos, entonces te hice esto...<br>
+        Toca el botón de acá abajo para poder ver lo que te hice...</p>
+        <button onclick="mostrarCarta()">Mira lo que te hice...</button>
+    </div>
+
+    <div id="carta" class="container hidden">
+        <h1>Holaa ❤️</h1>
+        <div class="carta">
+            <p>Lo nuestro es medio raro porque, apenas tenemos 15 días de escuela y ya somos algo 😎</p>
+            <p>Nomas te quería decir que te amo y que va a ser raro que te diga amor por mensaje. No es que no quiera sino que no estoy acostumbrado. Pero seguramente sí te diga amor cuando estemos en la escuela o en otro lado...</p>
+            <p>Ah, y también te quería decir gracias por la TITA 🍫</p>
+        </div>
+    </div>
+
+    <script>
+        function crearCorazones(cantidad) {
+            for (let i = 0; i < cantidad; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("hearts");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+        }
+
+        setInterval(() => { crearCorazones(5); }, 1000);
+
+        function mostrarCarta() {
+            document.getElementById("inicio").classList.add("hidden");
+            document.getElementById("carta").classList.remove("hidden");
+            setInterval(() => { crearCorazones(10); }, 1000);
+        }
+    </script>
+</body>
+</html>
