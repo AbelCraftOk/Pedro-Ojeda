@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holaaa Lu</title>
+    <style>
+        body {
+            background-color: pink;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        .container {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .box {
+            display: none;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .box.active {
+            display: block;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        @keyframes heart-fall {
+            0% { transform: translateY(-100px) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            animation: heart-fall linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Holaaa Lu</h1>
+    <div class="container">
+        <p>Se que lo nuestro termino medio raro</p>
+        <p>Pero recorda esto: 👇</p>
+        <div id="box-container">
+            <div class="box active">SIEMPRE PARA MI FUISTE Y SERAS</div>
+            <div class="box">UNA CHICA...</div>
+            <div class="box">❤️‍🩹 LINDA ❤️‍🩹</div>
+            <div class="box">💗 BONITA 💗</div>
+            <div class="box">💕 HERMOSA 💕</div>
+            <div class="box">💞 DIVINA 💞</div>
+            <div class="box">❤️ PRECIOSA ❤️</div>
+            <div class="box">💓 BELLA 💓</div>
+            <div class="box">💝 PERFECTA 💝</div>
+            <div class="box">💐 GUAPA 💐</div>
+            <div class="box">😂 GRACIOSA 😂</div>
+            <div class="box">🤍 Y mucho más de lo que te puedas imaginar 🤍</div>
+            <div class="box">MIS INTENCIONES ERAN...</div>
+            <div class="box">Cuidarte 💝</div>
+            <div class="box">Valorarte 🏆</div>
+            <div class="box">Respetarte 🙋🏻</div>
+            <div class="box">Protegerte 🛡️</div>
+            <div class="box">Estar ahi cuando me necesites 🤗</div>
+            <div class="box">Se que por ahi no te di demaciada atencio ni tampoco fui buen novio,</div>
+            <div class="box">Tambien se que estuve mucha verguenza.</div>
+            <div class="box">Pero te prometo que si me das una segunda oportunidad,</div>
+            <div class="box">Voy a tratar de ser el novio perfecto, te prometo que no la voy a desperdiciar,</div>
+            <div class="box">Te prometo que no voy a tener mas verguenza, que voy a tratar de ser el novio perfecto,</div>
+            <div class="box">Que siempre voy a hablar con vos y te voy a apoyar en todo lo que necesites,</div>
+            <div class="box">Esto fue un texto que hice yo, para que sepas que siempre voy a estar para vos.</div>
+            <div class="box">Atte: Pedro Ojeda ❤️</div>
+        </div>
+        <button onclick="nextBox()">&gt;</button>
+    </div>
+    <script>
+        let currentIndex = 0;
+        function nextBox() {
+            let boxes = document.querySelectorAll('.box');
+            boxes[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % boxes.length;
+            boxes[currentIndex].classList.add('active');
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
